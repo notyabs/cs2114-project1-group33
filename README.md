@@ -95,7 +95,3 @@ classDiagram
     User ..> VendingMachine : interacts with
 ```
 
-## How to Run
-
-Run `VendingMachine.main()` to start the simulation.
-
