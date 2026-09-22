@@ -27,3 +27,75 @@ The Riddler Machine is an interactive, console-based vending machine simulation 
 2. Navigate to `src/vending/VendingMachine.java`.
 3. Click the **Run** button to start the interactive console.
 4. Follow the on-screen prompts to view the menu, answer riddles, and purchase items.
+
+# The Riddler Machine
+
+A vending machine simulation with users, snacks, and riddles.
+
+## Class Diagram
+
+```mermaid
+classDiagram
+    class User {
+        -name: String
+        -itemsPurchased: List~Item~
+        -physicalWallet: double
+        -digitalWallet: double
+        +User(name: String, physicalWallet: double, digitalWallet: double)
+        +setName(name: String) void
+        +getName() String
+        +getPhysicalWallet() double
+        +setPhysicalWallet(physicalWallet: double) void
+        +getDigitalWallet() double
+        +setDigitalWallet(digitalWallet: double) void
+        +getItemsPurchased() List~Item~
+        +addPurchasedItem(item: Item) void
+    }
+
+    class Item {
+        -name: String
+        -price: double
+        -quantity: int
+        -key: String
+        -isSpecial: boolean
+        +Item(name: String, price: double, quantity: int, key: String, isSpecial: boolean)
+        +getName() String
+        +getPrice() double
+        +getQuantity() int
+        +setQuantity(quantity: int) void
+        +getKey() String
+        +isSpecial() boolean
+    }
+
+    class VendingMachine {
+        -inventory: Map~String, Item~
+        -riddles: List~Riddle~
+        +VendingMachine()
+        +addItem(item: Item) void
+        +addRiddle(riddle: Riddle) void
+        +removeItem(key: String) Item
+        +processPayment(user: User, price: double, paymentType: String) boolean
+        +displayItems(showSpecial: boolean) void
+        +getRandomRiddle() Riddle
+        +main(args: String[]) void$
+    }
+
+    class Riddle {
+        -question: String
+        -answer: String
+        +Riddle(question: String, answer: String)
+        +getQuestion() String
+        +checkAnswer(input: String) boolean
+    }
+
+    %% Relationships highlighting how the system connects
+    VendingMachine "1" *-- "*" Item : stores in inventory Map
+    VendingMachine "1" *-- "*" Riddle : stores in riddles List
+    User "1" --> "*" Item : stores in itemsPurchased List
+    User ..> VendingMachine : interacts with
+```
+
+## How to Run
+
+Run `VendingMachine.main()` to start the simulation.
+
