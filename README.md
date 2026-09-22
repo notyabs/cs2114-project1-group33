@@ -28,10 +28,6 @@ The Riddler Machine is an interactive, console-based vending machine simulation 
 3. Click the **Run** button to start the interactive console.
 4. Follow the on-screen prompts to view the menu, answer riddles, and purchase items.
 
-# The Riddler Machine
-
-A vending machine simulation with users, snacks, and riddles.
-
 ## Class Diagram
 
 ```mermaid
